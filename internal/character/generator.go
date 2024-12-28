@@ -1,17 +1,19 @@
 package character
 
-import "math/rand"
-
 // generate a character with random stats
 func GenerateCharacter(name string, age int) Character {
-	return Character{
+	character := Character{
 		Name: name,
 		Age:  age,
-		STR:  rand.Intn(100),
-		DEX:  rand.Intn(100),
-		CON:  rand.Intn(100),
-		INT:  rand.Intn(100),
-		WIS:  rand.Intn(100),
-		CHA:  rand.Intn(100),
+		STR:  getRandomStat(),
+		DEX:  getRandomStat(),
+		CON:  getRandomStat(),
+		INT:  getRandomStat(),
+		WIS:  getRandomStat(),
+		CHA:  getRandomStat(),
+		SIZ:  getRandomStat(),
 	}
+	character.HP = getHP(character.CON, character.SIZ)
+	character.DamageBonus = getDamageBonus(character.STR, character.SIZ)
+	return character
 }
