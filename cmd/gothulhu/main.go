@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/ropfoo/gothulhu/internal/character"
+	"github.com/ropfoo/gothulhu/internal/model"
 )
 
 var reader = bufio.NewReader(os.Stdin)
@@ -26,7 +27,10 @@ func main() {
 	name = strings.TrimSpace(name)
 	ageInt, _ := strconv.Atoi(age)
 
-	character := character.GenerateCharacter(name, ageInt)
+	character := character.GenerateCharacter(model.CharacterParams{
+		Name: name,
+		Age:  ageInt,
+	})
 	if options.ShouldExportJSON {
 		// export to json file
 		fileName := fmt.Sprintf("%s.json", name)

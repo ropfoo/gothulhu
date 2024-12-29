@@ -1,4 +1,4 @@
-package character
+package model
 
 import (
 	"encoding/json"
@@ -14,24 +14,26 @@ func TestCharacter_ToJSON(t *testing.T) {
 		{
 			name: "valid character",
 			char: Character{
-				Name:        "Conan",
-				Age:         30,
-				HP:          75,
-				STR:         85,
-				DEX:         70,
-				SIZ:         65,
-				CON:         80,
-				INT:         60,
-				WIS:         55,
-				CHA:         75,
+				Name: "Conan",
+				Age:  30,
+				HP:   75,
+				Stats: Stats{
+					STR: 85,
+					DEX: 70,
+					SIZ: 65,
+					CON: 80,
+					INT: 60,
+					WIS: 55,
+					CHA: 75,
+				},
 				DamageBonus: DamageBonus{},
 			},
-			expected: `{"name":"Conan","age":30,"hp":75,"str":85,"dex":70,"siz":65,"con":80,"int":60,"wis":55,"cha":75,"damage_bonus":{"damage":"","stature":""}}`,
+			expected: `{"name":"Conan","age":30,"hp":75,"damage_bonus":{"damage":"","stature":""},"stats":{"str":85,"dex":70,"con":80,"int":60,"wis":55,"cha":75,"siz":65}}`,
 		},
 		{
 			name:     "empty character",
 			char:     Character{},
-			expected: `{"name":"","age":0,"hp":0,"str":0,"dex":0,"siz":0,"con":0,"int":0,"wis":0,"cha":0,"damage_bonus":{"damage":"","stature":""}}`,
+			expected: `{"name":"","age":0,"hp":0,"damage_bonus":{"damage":"","stature":""},"stats":{"str":0,"dex":0,"con":0,"int":0,"wis":0,"cha":0,"siz":0}}`,
 		},
 	}
 

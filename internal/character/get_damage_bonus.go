@@ -1,11 +1,8 @@
 package character
 
-type DamageBonus struct {
-	Damage  string `json:"damage"`
-	Stature string `json:"stature"`
-}
+import "github.com/ropfoo/gothulhu/internal/model"
 
-var damageBonus = map[int]DamageBonus{
+var damageBonus = map[int]model.DamageBonus{
 	-2: {Damage: "-2", Stature: "-2"},
 	-1: {Damage: "-1", Stature: "-1"},
 	0:  {Damage: "0", Stature: "0"},
@@ -17,7 +14,7 @@ var damageBonus = map[int]DamageBonus{
 	6:  {Damage: "5d6", Stature: "+6"},
 }
 
-func getDamageBonus(str int, siz int) DamageBonus {
+func getDamageBonus(str int, siz int) model.DamageBonus {
 	sum := str + siz
 	switch {
 	case sum <= 64:

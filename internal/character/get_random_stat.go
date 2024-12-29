@@ -12,3 +12,10 @@ func getRandomStat() int {
 	}
 	return sum / rolls
 }
+
+func getStat(stat int) int {
+	if stat > 0 {
+		return stat
+	}
+	return getRandomStat()
+}
