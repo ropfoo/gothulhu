@@ -2,7 +2,7 @@
   --primary-color: #001515;
   --secondary-color: #002c2c;
   --accent-color: #006f6f;
-  --accent-color-light: #00b2b2;
+  --accent-color-light: #00c0c0;
   --text-color: #e4ffff;
 
   --dark-color: #001111;
@@ -68,22 +68,6 @@ input {
   font-size: 1rem;
 }
 
-button {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  border: 1px solid var(--primary-color);
-  border-width: 1px;
-  border-color: var(--accent-color);
-  border-radius: var(--border-radius-small);
-  padding: 5px 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: var(--secondary-color);
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -111,6 +95,55 @@ button:hover {
 
 .title-container {
   align-items: center;
+}
+
+.section {
+  margin: 2rem 0;
+}
+
+.text {
+  line-height: 1.5;
+}
+
+.link {
+  color: var(--accent-color-light);
+  text-decoration: none;
+}
+
+.button {
+  color: var(--accent-color-light);
+  text-decoration: none;
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius-small);
+  padding: 5px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color-light);
+  color: var(--text-color);
+}
+
+.button.large {
+  padding: 10px 16px;
+  font-size: 1.05rem;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.button.small {
+  padding: 5px 8px;
+  font-size: 0.95rem;
+  font-weight: normal;
+  margin: 0.5rem 0;
 }
 
 .character-container {

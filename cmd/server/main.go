@@ -28,6 +28,11 @@ func main() {
 		http.ServeFile(w, r, "styling/main.css")
 	})
 
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html")
+		w.Write([]byte(tmpl.IndexPage()))
+	})
+
 	http.HandleFunc("/generate", func(w http.ResponseWriter, r *http.Request) {
 		characterParams := getCharacterParams(r)
 

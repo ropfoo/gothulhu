@@ -32,7 +32,9 @@
   <section id="stats" class="character-section stats-section">
     <div class="character-section-header">
       <h3>Stats</h3>
-      <button type="button" onclick="resetStatValues()">Reset</button>
+      <button class="button small" type="button" onclick="resetStatValues()">
+        Reset
+      </button>
     </div>
     <div class="input-row flex-row">
       <label>Strength</label>
@@ -62,6 +64,6 @@
       <label>Charisma</label>
       <input type="number" name="cha" value="{{.Stats.CHA}}" />
     </div>
-    <button type="submit">Generate</button>
+    <button class="button large" type="submit">Generate</button>
   </section>
 </form>

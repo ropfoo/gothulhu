@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styling/main.css" />
+    <title>Generate Character</title>
+  </head>
+  <script>
+    function resetStatValues() {
+      const stats = document.getElementById("stats");
+      stats.querySelectorAll("input").forEach((input) => {
+        input.value = "";
+      });
+    }
+  </script>
+  <body>
+    <div class="title-container flex-column">
+      <h1>Call of Cthulhu</h1>
+      <h2>Character Generator</h2>
+    </div>
+    <div class="character-container">
+      {{.CharacterForm}} {{.CharacterResult}}
+    </div>
+  </body>
+</html>
