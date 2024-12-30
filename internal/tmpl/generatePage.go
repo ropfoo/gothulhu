@@ -19,7 +19,7 @@ func GeneratePage(c model.Character) string {
 				}
 			</script>
 			<body>
-				<div class="title-container">
+				<div class="title-container flex-column">
 					<h1>Call of Cthulhu</h1>
 					<h2>Character Generator</h2>
 				</div>
