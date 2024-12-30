@@ -101,6 +101,11 @@ nav {
 
 .title-container {
   align-items: center;
+  line-height: 0.75;
+}
+
+.title-container h2 {
+  font-size: 1.15rem;
 }
 
 .section {
@@ -158,6 +163,45 @@ nav {
   background-color: var(--dark-color);
   color: var(--accent-color);
   padding: 0.35rem 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  max-width: 300px;
+  font-family: "Times New Roman", Times, serif;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color-light) 0%,
+    var(--secondary-color) 120%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-title-container {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.page-title-container div {
+  width: 50%;
+}
+
+.page-title-container-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.page-title-container-content p {
   margin-bottom: 1rem;
 }
 
