@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"html/template"
 	"path/filepath"
+
+	navigation "github.com/ropfoo/gothulhu/internal/tmpl/navigation"
 )
 
 func IndexPage() string {
@@ -12,8 +14,14 @@ func IndexPage() string {
 		return ""
 	}
 
+	data := struct {
+		Navigation template.HTML
+	}{
+		Navigation: template.HTML(navigation.Navigation()),
+	}
+
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, nil); err != nil {
+	if err := tmpl.Execute(&buf, data); err != nil {
 		return ""
 	}
 

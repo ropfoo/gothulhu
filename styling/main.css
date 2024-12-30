@@ -1,7 +1,7 @@
 :root {
   --primary-color: #001515;
   --secondary-color: #002c2c;
-  --accent-color: #006f6f;
+  --accent-color: #008a8a;
   --accent-color-light: #00c0c0;
   --text-color: #e4ffff;
 
@@ -66,6 +66,12 @@ input {
   border-radius: var(--border-radius-small);
   padding: 5px;
   font-size: 1rem;
+}
+
+nav {
+  a {
+    text-decoration: none;
+  }
 }
 
 .flex-row {
@@ -137,13 +143,22 @@ input {
   font-size: 1.05rem;
   width: 100%;
   margin: 0.5rem 0;
+  max-width: 300px;
 }
 
 .button.small {
   padding: 5px 8px;
   font-size: 0.95rem;
   font-weight: normal;
-  margin: 0.5rem 0;
+}
+
+.info {
+  font-size: 0.85rem;
+  border-left: 2px solid var(--accent-color);
+  background-color: var(--dark-color);
+  color: var(--accent-color);
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .character-container {
@@ -193,6 +208,8 @@ input {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 30px;
+  padding: 0.25rem 0;
   margin-bottom: 1rem;
 }
 

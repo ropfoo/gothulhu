@@ -6,6 +6,8 @@ import (
 	"log"
 	"path/filepath"
 
+	navigation "github.com/ropfoo/gothulhu/internal/tmpl/navigation"
+
 	"github.com/ropfoo/gothulhu/internal/model"
 )
 
@@ -17,9 +19,11 @@ func GeneratePage(c model.Character) string {
 	}
 
 	data := struct {
+		Navigation      template.HTML
 		CharacterForm   template.HTML
 		CharacterResult template.HTML
 	}{
+		Navigation:      template.HTML(navigation.Navigation()),
 		CharacterForm:   template.HTML(characterForm(c)),
 		CharacterResult: template.HTML(characterResult(c)),
 	}
