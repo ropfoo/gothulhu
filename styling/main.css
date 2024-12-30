@@ -27,6 +27,8 @@ body {
   background-color: var(--primary-color);
   color: var(--text-color);
   padding: 1rem;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 /* Move media queries outside the body rule */
@@ -148,13 +150,20 @@ nav {
   font-size: 1.05rem;
   width: 100%;
   margin: 0.5rem 0;
-  max-width: 300px;
+  max-width: 500px;
 }
 
 .button.small {
   padding: 5px 8px;
   font-size: 0.95rem;
   font-weight: normal;
+}
+
+.mobile-space {
+  margin-bottom: 1.25rem;
+  @media screen and (min-width: 681px) {
+    margin-bottom: 0;
+  }
 }
 
 .info {
@@ -182,16 +191,25 @@ nav {
 }
 
 .page-title-container {
-  margin-top: 5rem;
+  margin-top: 3.5rem;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+
+  @media screen and (min-width: 681px) {
+    margin-top: 5rem;
+    align-items: center;
+    flex-direction: row;
+  }
 }
 
 .page-title-container div {
-  width: 50%;
+  width: 100%;
+  @media screen and (min-width: 681px) {
+    width: 50%;
+  }
 }
 
 .page-title-container-content {
@@ -216,10 +234,11 @@ nav {
   flex-direction: column;
   border: 1px solid var(--secondary-color);
   border-radius: var(--border-radius);
-  padding: 1.5rem 2rem;
+  padding: 1rem 1rem;
 
   @media screen and (min-width: 900px) {
     flex-direction: row;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -229,9 +248,11 @@ nav {
 
 .general-section {
   width: 100%;
+  margin-bottom: 2rem;
 
   @media screen and (min-width: 900px) {
     width: 50%;
+    margin-bottom: 0;
   }
 }
 
@@ -268,7 +289,11 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem 0;
-  padding: 1.25rem 2rem;
+  padding: 1rem;
+
+  @media screen and (min-width: 900px) {
+    padding: 1.25rem 2rem;
+  }
 }
 
 .character-header {
