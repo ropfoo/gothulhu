@@ -58,6 +58,10 @@ h2 {
   color: var(--accent-color);
 }
 
+h4 {
+  margin-bottom: 0.5rem;
+}
+
 label {
   margin-bottom: 5px;
 }
@@ -78,7 +82,7 @@ nav {
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 3rem;
   background-color: black;
   width: 100%;
   padding: 1rem;
@@ -193,12 +197,13 @@ footer {
   background: linear-gradient(
     90deg,
     var(--accent-color-light) 0%,
-    var(--secondary-color) 120%
+    var(--secondary-color) 140%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  margin-bottom: 1rem;
 }
 
 .page-title-container {
@@ -376,8 +381,8 @@ footer {
 }
 
 .api-docs-code {
-  background-color: var(--secondary-color);
   padding: 1rem;
+  border: 2px solid var(--secondary-color);
   border-radius: var(--border-radius);
   gap: 1rem;
   justify-content: space-between;

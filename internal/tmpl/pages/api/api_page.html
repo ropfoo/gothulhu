@@ -4,29 +4,45 @@
   <body>
     {{.Navigation}}
     <main>
-      <h1>API</h1>
-      <section class="api-docs-section">
-        <h2>Generate NPC</h2>
+      <h1 class="page-title">API</h1>
+      <section class="api-docs-section" aria-labelledby="generate-npc-heading">
+        <h2 id="generate-npc-heading">Generate NPC</h2>
         <div class="flex column api-docs-code">
-          <code class="api-docs-request">
-            <p>https://www.gothulhu.app/api/generate?name=Peter_Shaw&age=23</p>
-          </code>
-          <pre class="api-docs-response">
-<code>
-{ 
-    "name": "Peter_Shaw", 
-    "age": 23, 
-    "stats": { 
-        "str": 10, 
-        "dex": 12, 
-        "con": 14, 
-        "int": 16, 
-        "wis": 18, 
-        "cha": 20 
-    } 
-}
-</code>
-          </pre>
+          <div
+            class="api-docs-request"
+            role="region"
+            aria-label="API Request Example"
+          >
+            <code
+              >https://www.gothulhu.app/api/generate?name=Peter_Shaw&age=23</code
+            >
+          </div>
+
+          <div
+            class="api-docs-response"
+            role="region"
+            aria-label="API Response Example"
+          >
+            <pre><code aria-label="JSON response example">
+{
+  "name": "Peter Shaw",
+  "age": 23,
+  "hp": 11,
+  "stats": {
+    "str": 71,
+    "dex": 47,
+    "con": 50,
+    "siz": 61,
+    "int": 36,
+    "wis": 65,
+    "cha": 53
+  },
+  "damage_bonus": {
+    "damage": "1d4",
+    "stature": "+1"
+  }
+}</code></pre>
+          </div>
         </div>
       </section>
     </main>
