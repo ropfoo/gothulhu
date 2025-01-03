@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styling/main.css" />
-    <title>Generate Character</title>
-  </head>
+  {{.Head}}
   <script>
     function resetStatValues() {
       const stats = document.getElementById("stats");
@@ -16,8 +11,11 @@
   </script>
   <body>
     {{.Navigation}}
-    <div class="character-container">
-      {{.CharacterForm}} {{.CharacterResult}}
-    </div>
+    <main>
+      <div class="character-container">
+        {{.CharacterForm}} {{.CharacterResult}}
+      </div>
+    </main>
+    {{.Footer}}
   </body>
 </html>

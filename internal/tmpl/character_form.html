@@ -11,7 +11,7 @@
     <div class="info">
       <p>Name and age are required.</p>
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label>Name</label>
       <input
         id="name"
@@ -21,7 +21,7 @@
         value="{{.Name}}"
       />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label>Age</label>
       <input
         id="age"
@@ -45,35 +45,35 @@
         generate new ones.
       </p>
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Str</b>ength</label>
       <input type="number" name="str" value="{{.Stats.STR}}" />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Dex</b>terity</label>
       <input type="number" name="dex" value="{{.Stats.DEX}}" />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Con</b>stitution</label>
       <input type="number" name="con" value="{{.Stats.CON}}" />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Siz</b>e</label>
       <input type="number" name="siz" value="{{.Stats.SIZ}}" />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Int</b>elligence</label>
       <input type="number" name="intl" value="{{.Stats.INT}}" />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Wis</b>dom</label>
       <input type="number" name="wis" value="{{.Stats.WIS}}" />
     </div>
-    <div class="input-row flex-row">
+    <div class="flex row input-row">
       <label><b>Cha</b>risma</label>
       <input type="number" name="cha" value="{{.Stats.CHA}}" />
     </div>
-    <div class="flex-row">
+    <div class="flex row">
       <button class="button large" type="submit">Generate</button>
     </div>
   </section>

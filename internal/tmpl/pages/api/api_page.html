@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{.Head}}
+  <body>
+    {{.Navigation}}
+    <main>
+      <h1>API</h1>
+      <section class="api-docs-section">
+        <h2>Generate NPC</h2>
+        <div class="flex column api-docs-code">
+          <code class="api-docs-request">
+            <p>https://www.gothulhu.app/api/generate?name=Peter_Shaw&age=23</p>
+          </code>
+          <pre class="api-docs-response">
+<code>
+{ 
+    "name": "Peter_Shaw", 
+    "age": 23, 
+    "stats": { 
+        "str": 10, 
+        "dex": 12, 
+        "con": 14, 
+        "int": 16, 
+        "wis": 18, 
+        "cha": 20 
+    } 
+}
+</code>
+          </pre>
+        </div>
+      </section>
+    </main>
+    {{.Footer}}
+  </body>
+</html>

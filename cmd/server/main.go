@@ -1,14 +1,19 @@
 package main
 
 import (
+	"compress/gzip"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
+	"strings"
 
 	"github.com/ropfoo/gothulhu/internal/character"
 	"github.com/ropfoo/gothulhu/internal/model"
 	"github.com/ropfoo/gothulhu/internal/tmpl"
+
+	apiPage "github.com/ropfoo/gothulhu/internal/tmpl/pages/api"
 )
 
 func main() {
@@ -25,7 +30,25 @@ func main() {
 	})
 
 	http.HandleFunc("/styling/main.css", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "styling/main.css")
+		w.Header().Set("Cache-Control", "public, max-age=31536000")
+
+		// Check if the client accepts gzip encoding
+		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
+			http.ServeFile(w, r, "styling/main.css")
+			return
+		}
+
+		w.Header().Set("Content-Encoding", "gzip")
+		gz := gzip.NewWriter(w)
+		defer gz.Close()
+
+		// Read and serve the file content through gzip
+		content, err := os.ReadFile("styling/main.css")
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		gz.Write(content)
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -45,6 +68,11 @@ func main() {
 
 		w.Header().Set("Content-Type", "text/html")
 		w.Write([]byte(tmpl.GeneratePage(char)))
+	})
+
+	http.HandleFunc("/api-docs", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html")
+		w.Write([]byte(apiPage.ApiPage()))
 	})
 
 	const port = 8000
