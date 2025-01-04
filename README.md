@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://github.com/ropfoo/gothulhu/blob/main/assets/favicon.ico" width="90" title="asmodeus">
+</p>
+<p align="center">
+  <a href="https://www.gothulhu.app">gothulhu.app</a>
+</p>
+
 # Gothulhu
 
 Gothulhu is a simple character generator for Call of Cthulhu 7th edition.
