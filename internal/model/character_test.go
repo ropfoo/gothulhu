@@ -14,9 +14,10 @@ func TestCharacter_ToJSON(t *testing.T) {
 		{
 			name: "valid character",
 			char: Character{
-				Name: "Conan",
-				Age:  30,
-				HP:   75,
+				Name:   "Conan",
+				Age:    30,
+				HP:     75,
+				Gender: "Male",
 				Stats: Stats{
 					STR: 85,
 					DEX: 70,
@@ -28,12 +29,12 @@ func TestCharacter_ToJSON(t *testing.T) {
 				},
 				DamageBonus: DamageBonus{},
 			},
-			expected: `{"name":"Conan","age":30,"hp":75,"damage_bonus":{"damage":"","stature":""},"stats":{"str":85,"dex":70,"con":80,"int":60,"wis":55,"cha":75,"siz":65}}`,
+			expected: `{"name":"Conan","age":30,"gender":"Male","hp":75,"damage_bonus":{"damage":"","stature":""},"stats":{"str":85,"dex":70,"con":80,"int":60,"wis":55,"cha":75,"siz":65}}`,
 		},
 		{
 			name:     "empty character",
 			char:     Character{},
-			expected: `{"name":"","age":0,"hp":0,"damage_bonus":{"damage":"","stature":""},"stats":{"str":0,"dex":0,"con":0,"int":0,"wis":0,"cha":0,"siz":0}}`,
+			expected: `{"name":"","age":0,"gender":"","hp":0,"damage_bonus":{"damage":"","stature":""},"stats":{"str":0,"dex":0,"con":0,"int":0,"wis":0,"cha":0,"siz":0}}`,
 		},
 	}
 

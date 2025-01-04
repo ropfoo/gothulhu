@@ -4,12 +4,22 @@
   accept-charset="utf-8"
   class="character-form"
 >
-  <section class="character-section general-section">
+  <section id="general" class="character-section general-section">
     <div class="character-section-header">
       <h3>General</h3>
+      <button class="button small" type="button" onclick="resetValues('general')">
+        Reset
+      </button>
     </div>
     <div class="info">
-      <p>Name and age are required.</p>
+      <p>Empty fields are generated randomly.</p>
+    </div>
+    <div class="flex row input-row">
+      <label>Gender</label>
+      <select name="gender">
+        <option value="male" {{if eq .Gender "male"}}selected{{end}}>Male</option>
+        <option value="female" {{if eq .Gender "female"}}selected{{end}}>Female</option>
+      </select>
     </div>
     <div class="flex row input-row">
       <label>Name</label>
@@ -35,7 +45,7 @@
   <section id="stats" class="character-section stats-section">
     <div class="character-section-header">
       <h3>Stats</h3>
-      <button class="button small" type="button" onclick="resetStatValues()">
+      <button class="button small" type="button" onclick="resetValues('stats')">
         Reset
       </button>
     </div>

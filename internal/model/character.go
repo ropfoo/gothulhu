@@ -2,9 +2,17 @@ package model
 
 import "encoding/json"
 
+type Gender string
+
+const (
+	Male   Gender = "male"
+	Female Gender = "female"
+)
+
 type Character struct {
 	Name        string      `json:"name"`
 	Age         int         `json:"age"`
+	Gender      Gender      `json:"gender"`
 	HP          int         `json:"hp"`
 	DamageBonus DamageBonus `json:"damage_bonus"`
 	Stats       Stats       `json:"stats"`

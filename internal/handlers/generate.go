@@ -18,7 +18,7 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var char model.Character
-	if characterParams.Name != "" && characterParams.Age != 0 {
+	if characterParams.Gender != model.Gender("") {
 		char = character.GenerateCharacter(characterParams)
 	}
 

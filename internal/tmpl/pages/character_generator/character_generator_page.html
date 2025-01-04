@@ -2,9 +2,9 @@
 <html>
   {{.Head}}
   <script>
-    function resetStatValues() {
-      const stats = document.getElementById("stats");
-      stats.querySelectorAll("input").forEach((input) => {
+    function resetValues(id) {
+      const target = document.getElementById(id);
+      target.querySelectorAll("input").forEach((input) => {
         input.value = "";
       });
     }

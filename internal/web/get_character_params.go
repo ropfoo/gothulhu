@@ -1,6 +1,7 @@
 package web
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -18,16 +19,28 @@ func GetCharacterParams(r *http.Request) (model.CharacterParams, error) {
 		return model.CharacterParams{}, err
 	}
 
+	// Add validation for age
+	if _, err := strconv.Atoi(paramValues["age"]); err != nil {
+		return model.CharacterParams{}, fmt.Errorf("invalid age: %s", paramValues["age"])
+	}
+
+	// Add validation for gender
+	gender := paramValues["gender"]
+	if gender != "male" && gender != "female" {
+		return model.CharacterParams{}, fmt.Errorf("invalid gender: %s", gender)
+	}
+
 	return model.CharacterParams{
-		Name:  paramValues["name"],
-		Age:   stats["age"],
-		Stats: buildCharacterStats(stats),
+		Name:   paramValues["name"],
+		Gender: model.Gender(paramValues["gender"]),
+		Age:    stats["age"],
+		Stats:  buildCharacterStats(stats),
 	}, nil
 }
 
 // extractFormValues gets values from both query parameters and form data
 func extractFormValues(r *http.Request) map[string]string {
-	fields := []string{"name", "age", "str", "dex", "con", "siz", "intl", "wis", "cha"}
+	fields := []string{"name", "age", "gender", "str", "dex", "con", "siz", "intl", "wis", "cha"}
 	values := make(map[string]string)
 
 	for _, field := range fields {

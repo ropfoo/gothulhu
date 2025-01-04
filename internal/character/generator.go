@@ -4,9 +4,24 @@ import "github.com/ropfoo/gothulhu/internal/model"
 
 // generate a character with random stats
 func GenerateCharacter(params model.CharacterParams) model.Character {
+	var name string
+	if params.Name == "" {
+		name = GetName(params.Gender)
+	} else {
+		name = params.Name
+	}
+
+	var age int
+	if params.Age == 0 {
+		age = GetAge()
+	} else {
+		age = params.Age
+	}
+
 	character := model.Character{
-		Name: params.Name,
-		Age:  params.Age,
+		Name:   name,
+		Age:    age,
+		Gender: params.Gender,
 		Stats: model.Stats{
 			STR: getStat(params.Stats.STR),
 			DEX: getStat(params.Stats.DEX),

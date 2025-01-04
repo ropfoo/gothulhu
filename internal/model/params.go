@@ -1,7 +1,8 @@
 package model
 
 type CharacterParams struct {
-	Name  string
-	Age   int
-	Stats Stats
+	Name   string
+	Age    int
+	Gender Gender
+	Stats  Stats
 }

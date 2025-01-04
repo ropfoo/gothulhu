@@ -20,19 +20,21 @@ func TestGetCharacterParams(t *testing.T) {
 		{
 			name: "valid query parameters",
 			queryParams: url.Values{
-				"name": []string{"John"},
-				"age":  []string{"25"},
-				"str":  []string{"14"},
-				"dex":  []string{"12"},
-				"con":  []string{"13"},
-				"siz":  []string{"11"},
-				"intl": []string{"15"},
-				"wis":  []string{"10"},
-				"cha":  []string{"16"},
+				"name":   []string{"John"},
+				"age":    []string{"25"},
+				"gender": []string{"male"},
+				"str":    []string{"14"},
+				"dex":    []string{"12"},
+				"con":    []string{"13"},
+				"siz":    []string{"11"},
+				"intl":   []string{"15"},
+				"wis":    []string{"10"},
+				"cha":    []string{"16"},
 			},
 			want: model.CharacterParams{
-				Name: "John",
-				Age:  25,
+				Name:   "John",
+				Age:    25,
+				Gender: "male",
 				Stats: model.Stats{
 					STR: 14,
 					DEX: 12,
@@ -48,19 +50,21 @@ func TestGetCharacterParams(t *testing.T) {
 		{
 			name: "valid form data",
 			formData: url.Values{
-				"name": []string{"Jane"},
-				"age":  []string{"30"},
-				"str":  []string{"16"},
-				"dex":  []string{"15"},
-				"con":  []string{"14"},
-				"siz":  []string{"12"},
-				"intl": []string{"13"},
-				"wis":  []string{"11"},
-				"cha":  []string{"10"},
+				"name":   []string{"Jane"},
+				"age":    []string{"30"},
+				"gender": []string{"female"},
+				"str":    []string{"16"},
+				"dex":    []string{"15"},
+				"con":    []string{"14"},
+				"siz":    []string{"12"},
+				"intl":   []string{"13"},
+				"wis":    []string{"11"},
+				"cha":    []string{"10"},
 			},
 			want: model.CharacterParams{
-				Name: "Jane",
-				Age:  30,
+				Name:   "Jane",
+				Age:    30,
+				Gender: "female",
 				Stats: model.Stats{
 					STR: 16,
 					DEX: 15,
@@ -76,15 +80,32 @@ func TestGetCharacterParams(t *testing.T) {
 		{
 			name: "invalid age",
 			queryParams: url.Values{
-				"name": []string{"Invalid"},
-				"age":  []string{"not_a_number"},
-				"str":  []string{"10"},
-				"dex":  []string{"10"},
-				"con":  []string{"10"},
-				"siz":  []string{"10"},
-				"intl": []string{"10"},
-				"wis":  []string{"10"},
-				"cha":  []string{"10"},
+				"name":   []string{"Invalid"},
+				"age":    []string{"not_a_number"},
+				"gender": []string{"male"},
+				"str":    []string{"10"},
+				"dex":    []string{"10"},
+				"con":    []string{"10"},
+				"siz":    []string{"10"},
+				"intl":   []string{"10"},
+				"wis":    []string{"10"},
+				"cha":    []string{"10"},
+			},
+			wantErr: true,
+		},
+		{
+			name: "invalid gender",
+			queryParams: url.Values{
+				"name":   []string{"Invalid"},
+				"age":    []string{"25"},
+				"gender": []string{"invalid_gender"},
+				"str":    []string{"10"},
+				"dex":    []string{"10"},
+				"con":    []string{"10"},
+				"siz":    []string{"10"},
+				"intl":   []string{"10"},
+				"wis":    []string{"10"},
+				"cha":    []string{"10"},
 			},
 			wantErr: true,
 		},
@@ -119,6 +140,9 @@ func TestGetCharacterParams(t *testing.T) {
 				}
 				if got.Age != tt.want.Age {
 					t.Errorf("GetCharacterParams() got age = %v, want %v", got.Age, tt.want.Age)
+				}
+				if got.Gender != tt.want.Gender {
+					t.Errorf("GetCharacterParams() got gender = %v, want %v", got.Gender, tt.want.Gender)
 				}
 				if got.Stats != tt.want.Stats {
 					t.Errorf("GetCharacterParams() got stats = %v, want %v", got.Stats, tt.want.Stats)
