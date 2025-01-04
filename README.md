@@ -15,22 +15,23 @@ You can either run it as a CLI or as a web server.
 
 ```bash
 # generate a character
-curl "https://www.gothulhu.app/api/generate?name=Peter_Shaw&age=23"
+curl "https://www.gothulhu.app/api/generate?gender=male&name=Peter_Shaw&con=50"
 ```
 
 List of available fields:
 
-| Field | Required |
-| ----- | -------- |
-| name  | yes      |
-| age   | yes      |
-| str   | no       |
-| dex   | no       |
-| con   | no       |
-| siz   | no       |
-| intl  | no       |
-| wis   | no       |
-| cha   | no       |
+| Field  | Required | Type             |
+| ------ | -------- | ---------------- |
+| gender | yes      | "male", "female" |
+| name   | no       | string           |
+| age    | no       | int              |
+| str    | no       | int              |
+| dex    | no       | int              |
+| con    | no       | int              |
+| siz    | no       | int              |
+| intl   | no       | int              |
+| wis    | no       | int              |
+| cha    | no       | int              |
 
 All optional fields are generated randomly if not provided.
 
@@ -40,6 +41,7 @@ Sample response:
 {
   "name": "Peter Shaw",
   "age": 23,
+  "gender": "male",
   "hp": 11,
   "stats": {
     "str": 71,
