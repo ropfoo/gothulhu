@@ -78,7 +78,46 @@ func TestGetCharacterParams(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "invalid age",
+			name: "missing optional parameters should use defaults",
+			queryParams: url.Values{
+				"name": []string{"John"},
+				"str":  []string{"14"},
+				"dex":  []string{"12"},
+			},
+			want: model.CharacterParams{
+				Name:   "John",
+				Age:    0,
+				Gender: "male",
+				Stats: model.Stats{
+					STR: 14,
+					DEX: 12,
+					CON: 0,
+					SIZ: 0,
+					INT: 0,
+					WIS: 0,
+					CHA: 0,
+				},
+			},
+			wantErr: false,
+		},
+		{
+			name: "missing name",
+			queryParams: url.Values{
+				"age":    []string{"25"},
+				"gender": []string{"male"},
+				"str":    []string{"14"},
+			},
+			want: model.CharacterParams{
+				Age:    25,
+				Gender: "male",
+				Stats: model.Stats{
+					STR: 14,
+				},
+			},
+			wantErr: false,
+		},
+		{
+			name: "with invalid age",
 			queryParams: url.Values{
 				"name":   []string{"Invalid"},
 				"age":    []string{"not_a_number"},
@@ -91,10 +130,24 @@ func TestGetCharacterParams(t *testing.T) {
 				"wis":    []string{"10"},
 				"cha":    []string{"10"},
 			},
-			wantErr: true,
+			want: model.CharacterParams{
+				Name:   "Invalid",
+				Age:    0,
+				Gender: "male",
+				Stats: model.Stats{
+					STR: 10,
+					DEX: 10,
+					CON: 10,
+					SIZ: 10,
+					INT: 10,
+					WIS: 10,
+					CHA: 10,
+				},
+			},
+			wantErr: false,
 		},
 		{
-			name: "invalid gender",
+			name: "with invalid gender",
 			queryParams: url.Values{
 				"name":   []string{"Invalid"},
 				"age":    []string{"25"},
@@ -107,7 +160,21 @@ func TestGetCharacterParams(t *testing.T) {
 				"wis":    []string{"10"},
 				"cha":    []string{"10"},
 			},
-			wantErr: true,
+			want: model.CharacterParams{
+				Name:   "Invalid",
+				Age:    25,
+				Gender: "male",
+				Stats: model.Stats{
+					STR: 10,
+					DEX: 10,
+					CON: 10,
+					SIZ: 10,
+					INT: 10,
+					WIS: 10,
+					CHA: 10,
+				},
+			},
+			wantErr: false,
 		},
 	}
 

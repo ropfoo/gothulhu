@@ -1,7 +1,6 @@
 package web
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -19,21 +18,21 @@ func GetCharacterParams(r *http.Request) (model.CharacterParams, error) {
 		return model.CharacterParams{}, err
 	}
 
-	// Add validation for age
-	if _, err := strconv.Atoi(paramValues["age"]); err != nil {
-		return model.CharacterParams{}, fmt.Errorf("invalid age: %s", paramValues["age"])
+	var age int
+	if val, err := strconv.Atoi(paramValues["age"]); err == nil {
+		age = val
 	}
 
-	// Add validation for gender
+	// Use default gender (male) if invalid
 	gender := paramValues["gender"]
 	if gender != "male" && gender != "female" {
-		return model.CharacterParams{}, fmt.Errorf("invalid gender: %s", gender)
+		gender = "male"
 	}
 
 	return model.CharacterParams{
 		Name:   paramValues["name"],
-		Gender: model.Gender(paramValues["gender"]),
-		Age:    stats["age"],
+		Gender: model.Gender(gender),
+		Age:    age,
 		Stats:  buildCharacterStats(stats),
 	}, nil
 }
