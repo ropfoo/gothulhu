@@ -5,9 +5,7 @@
   <a href="https://www.gothulhu.app">gothulhu.app</a>
 </p>
 
-# Gothulhu
-
-Gothulhu is a simple character generator for Call of Cthulhu 7th edition.
+A simple character generator for the Call of Cthulhu 7th edition pen and paper role-playing game.
 
 You can either run it as a CLI or as a web server.
 
