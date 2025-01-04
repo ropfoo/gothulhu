@@ -8,9 +8,12 @@ import (
 	"github.com/ropfoo/gothulhu/internal/model"
 )
 
-// return html template for character
-func characterForm(c model.Character) string {
-	tmpl, err := template.ParseFiles(filepath.Join("internal", "tmpl", "character_form.html"))
+func characterResult(c model.Character) string {
+	if c.Name == "" {
+		return ""
+	}
+
+	tmpl, err := template.ParseFiles(filepath.Join("internal", "tmpl", "pages", "character_generator", "character_result.html"))
 	if err != nil {
 		return ""
 	}

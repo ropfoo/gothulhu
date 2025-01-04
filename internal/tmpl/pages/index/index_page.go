@@ -10,7 +10,7 @@ import (
 )
 
 func IndexPage() string {
-	tmpl, err := template.ParseFiles(filepath.Join("internal", "tmpl", "index_page.html"))
+	tmpl, err := template.ParseFiles(filepath.Join("internal", "tmpl", "pages", "index", "index_page.html"))
 	if err != nil {
 		return ""
 	}

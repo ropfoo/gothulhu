@@ -18,8 +18,9 @@ func Head(params HeadParams) template.HTML {
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="` + params.Description + `">
-        
-        <link rel="stylesheet" href="/styling/main.css" />
+
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="stylesheet" href="/styling/main.css" />
 		` + links + `
         
 		<title>` + params.Title + `</title>

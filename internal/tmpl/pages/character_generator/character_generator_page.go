@@ -12,8 +12,8 @@ import (
 	"github.com/ropfoo/gothulhu/internal/model"
 )
 
-func GeneratePage(c model.Character) string {
-	tmpl, err := template.ParseFiles(filepath.Join("internal", "tmpl", "generate_page.html"))
+func CharacterGeneratorPage(c model.Character) string {
+	tmpl, err := template.ParseFiles(filepath.Join("internal", "tmpl", "pages", "character_generator", "character_generator_page.html"))
 	if err != nil {
 		log.Printf("Error parsing template: %v", err)
 		return ""
@@ -29,6 +29,7 @@ func GeneratePage(c model.Character) string {
 		Head: general.Head(general.HeadParams{
 			Title:       "Generate Character | Gothulhu",
 			Description: "Generate a character for Call of Cthulhu 7th edition with Gothulhu.",
+			Stylesheets: []string{"/styling/character.css"},
 		}),
 		Navigation:      template.HTML(navigation.Navigation()),
 		CharacterForm:   template.HTML(characterForm(c)),
