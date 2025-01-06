@@ -2,6 +2,7 @@ package tmpl
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
 	"path/filepath"
 
@@ -18,10 +19,47 @@ func characterResult(c model.Character) string {
 		return ""
 	}
 
+	characterURL := buildCharacterURL(c)
+
+	data := struct {
+		Character    model.Character
+		CharacterURL string
+	}{
+		Character:    c,
+		CharacterURL: characterURL,
+	}
+
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, c); err != nil {
+	if err := tmpl.Execute(&buf, data); err != nil {
 		return ""
 	}
 
 	return buf.String()
+}
+
+func buildCharacterURL(c model.Character) string {
+	params := []struct {
+		key   string
+		value interface{}
+	}{
+		{"name", c.Name},
+		{"age", c.Age},
+		{"gender", c.Gender},
+		{"str", c.Stats.STR},
+		{"dex", c.Stats.DEX},
+		{"con", c.Stats.CON},
+		{"intl", c.Stats.INT},
+		{"wis", c.Stats.WIS},
+		{"cha", c.Stats.CHA},
+		{"siz", c.Stats.SIZ},
+	}
+
+	url := "https://www.gothulhu.app/generate?"
+	for i, p := range params {
+		if i > 0 {
+			url += "&"
+		}
+		url += fmt.Sprintf("%s=%v", p.key, p.value)
+	}
+	return url
 }

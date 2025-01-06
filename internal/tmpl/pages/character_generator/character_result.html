@@ -1,43 +1,89 @@
+<script>
+  function toggleInput() {
+    const input = document.getElementById("shareInput");
+    if (input.style.display === "none") {
+      input.style.display = "inline-block";
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+    } else {
+      input.style.display = "none";
+    }
+  }
+</script>
+
 <section id="result" class="character-result">
   <div class="flex row character-header">
-    <h1>{{.Name}}</h1>
+    <h1>{{.Character.Name}}</h1>
+    <div class="flex row character-header-menu">
+      <div>
+        <a class="button small" href="#general">edit</a>
+      </div>
+      <div class="flex column character-header-menu-share">
+        <button class="button small" type="button" onclick="toggleInput()">
+          share
+        </button>
+        <input
+          type="text"
+          id="shareInput"
+          class="character-share-input"
+          style="display: none; margin-left: 0.5rem"
+          value="{{.CharacterURL}}"
+          readonly
+        />
+      </div>
+    </div>
   </div>
   <div class="flex row character-info">
     <div class="character-info-left">
-      <div class="character-hp">
-        <p>HP {{.HP}}</p>
+      <div class="character-age-gender">
+        <p>{{.Character.Age}}</p>
+        |
+        <p>{{.Character.Gender}}</p>
       </div>
-      <p>Age: {{.Age}}</p>
+      <div class="character-hp">
+        <p>HP {{.Character.HP}}</p>
+      </div>
       <div class="character-damage-bonus">
-        <p>Damage Bonus:</p>
-        <p>Damage: {{.DamageBonus.Damage}}</p>
-        <p>Stature: {{.DamageBonus.Stature}}</p>
+        <p class="character-damage-bonus-title">Damage Bonus</p>
+        <div class="character-damage-bonus-row">
+          <p class="character-damage-bonus-damage">Damage:</p>
+          <p class="character-damage-bonus-damage">
+            {{.Character.DamageBonus.Damage}}
+          </p>
+        </div>
+        <div class="character-damage-bonus-row">
+          <p class="character-damage-bonus-stature">Stature:</p>
+          <p class="character-damage-bonus-stature">
+            {{.Character.DamageBonus.Stature}}
+          </p>
+        </div>
       </div>
     </div>
     <div class="character-stats">
       <div class="character-stats-row">
         <p>STR</p>
-        <p class="character-stats-value">{{.Stats.STR}}</p>
+        <p class="character-stats-value">{{.Character.Stats.STR}}</p>
       </div>
       <div class="character-stats-row">
         <p>DEX</p>
-        <p class="character-stats-value">{{.Stats.DEX}}</p>
+        <p class="character-stats-value">{{.Character.Stats.DEX}}</p>
       </div>
       <div class="character-stats-row">
         <p>CON</p>
-        <p class="character-stats-value">{{.Stats.CON}}</p>
+        <p class="character-stats-value">{{.Character.Stats.CON}}</p>
       </div>
       <div class="character-stats-row">
         <p>INT</p>
-        <p class="character-stats-value">{{.Stats.INT}}</p>
+        <p class="character-stats-value">{{.Character.Stats.INT}}</p>
       </div>
       <div class="character-stats-row">
         <p>WIS</p>
-        <p class="character-stats-value">{{.Stats.WIS}}</p>
+        <p class="character-stats-value">{{.Character.Stats.WIS}}</p>
       </div>
       <div class="character-stats-row">
         <p>CHA</p>
-        <p class="character-stats-value">{{.Stats.CHA}}</p>
+        <p class="character-stats-value">{{.Character.Stats.CHA}}</p>
       </div>
     </div>
   </div>
