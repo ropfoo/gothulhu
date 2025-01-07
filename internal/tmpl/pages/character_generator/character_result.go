@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/ropfoo/gothulhu/internal/model"
+	"github.com/ropfoo/gothulhu/internal/web"
 )
 
 func characterResult(c model.Character) string {
@@ -20,6 +21,7 @@ func characterResult(c model.Character) string {
 	}
 
 	characterURL := buildCharacterURL(c)
+	characterURL = web.ReplaceWhitespacesWithUnderscores(characterURL)
 
 	data := struct {
 		Character    model.Character

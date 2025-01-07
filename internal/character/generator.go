@@ -1,6 +1,9 @@
 package character
 
-import "github.com/ropfoo/gothulhu/internal/model"
+import (
+	"github.com/ropfoo/gothulhu/internal/model"
+	"github.com/ropfoo/gothulhu/internal/web"
+)
 
 // generate a character with random stats
 func GenerateCharacter(params model.CharacterParams) model.Character {
@@ -9,6 +12,7 @@ func GenerateCharacter(params model.CharacterParams) model.Character {
 		name = GetName(params.Gender)
 	} else {
 		name = params.Name
+		name = web.ReplaceUnderscoresWithWhitespaces(name)
 	}
 
 	var age int
