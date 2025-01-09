@@ -23,18 +23,14 @@ func GetCharacterParams(r *http.Request) (model.CharacterParams, error) {
 		age = val
 	}
 
-	// Use default gender (male) if invalid
-	gender := paramValues["gender"]
-	if gender != "male" && gender != "female" {
-		gender = "male"
-	}
-
-	return model.CharacterParams{
+	params := model.CharacterParams{
 		Name:   paramValues["name"],
-		Gender: model.Gender(gender),
+		Gender: paramValues["gender"],
 		Age:    age,
 		Stats:  buildCharacterStats(stats),
-	}, nil
+	}
+
+	return params, nil
 }
 
 // extractFormValues gets values from both query parameters and form data

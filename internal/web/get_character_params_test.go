@@ -87,7 +87,7 @@ func TestGetCharacterParams(t *testing.T) {
 			want: model.CharacterParams{
 				Name:   "John",
 				Age:    0,
-				Gender: "male",
+				Gender: "",
 				Stats: model.Stats{
 					STR: 14,
 					DEX: 12,
@@ -163,7 +163,7 @@ func TestGetCharacterParams(t *testing.T) {
 			want: model.CharacterParams{
 				Name:   "Invalid",
 				Age:    25,
-				Gender: "male",
+				Gender: "invalid_gender",
 				Stats: model.Stats{
 					STR: 10,
 					DEX: 10,

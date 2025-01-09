@@ -7,7 +7,7 @@ import (
 	"github.com/ropfoo/gothulhu/internal/model"
 )
 
-func GetName(gender model.Gender) string {
+func getRandomName(gender model.Gender) string {
 	surname := data.Surnames[rand.Intn(len(data.Surnames))]
 
 	var firstName string

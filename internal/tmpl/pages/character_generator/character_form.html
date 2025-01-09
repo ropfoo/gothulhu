@@ -16,7 +16,7 @@
     </div>
     <div class="flex row input-row">
       <label>Gender</label>
-      <select name="gender">
+      <select name="gender" autocomplete="off">
         <option value="male" {{if eq .Gender "male"}}selected{{end}}>Male</option>
         <option value="female" {{if eq .Gender "female"}}selected{{end}}>Female</option>
       </select>

@@ -3,6 +3,6 @@ package model
 type CharacterParams struct {
 	Name   string
 	Age    int
-	Gender Gender
+	Gender string
 	Stats  Stats
 }

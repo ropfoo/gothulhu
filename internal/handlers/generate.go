@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/ropfoo/gothulhu/internal/character"
-	"github.com/ropfoo/gothulhu/internal/model"
 	characterGeneratorPage "github.com/ropfoo/gothulhu/internal/tmpl/pages/character_generator"
 	"github.com/ropfoo/gothulhu/internal/web"
 )
@@ -17,10 +16,7 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var char model.Character
-	if characterParams.Gender != model.Gender("") {
-		char = character.GenerateCharacter(characterParams)
-	}
+	char := character.GenerateCharacter(characterParams)
 
 	log.Printf("Character: %+v", char)
 

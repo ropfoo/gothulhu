@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func GetAge() int {
+func getRandomAge() int {
 	// Create a local random source
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
