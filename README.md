@@ -12,15 +12,18 @@ You can either run it as a CLI or as a web server.
 ## API Usage
 
 ```bash
-# generate a character
-curl "https://www.gothulhu.app/api/generate?gender=male&name=Peter_Shaw&con=50"
+# generate a random character
+curl "https://www.gothulhu.app/api/generate"
+
+# generate a character with specific parameters
+curl "https://www.gothulhu.app/api/generate?name=Peter_Shaw&gender=male&con=50"
 ```
 
 List of available fields:
 
 | Field  | Required | Type             |
 | ------ | -------- | ---------------- |
-| gender | yes      | "male", "female" |
+| gender | no       | "male", "female" |
 | name   | no       | string           |
 | age    | no       | int              |
 | str    | no       | int              |

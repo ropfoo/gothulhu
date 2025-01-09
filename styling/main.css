@@ -253,9 +253,14 @@ footer {
 }
 
 .api-docs-code code {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .api-docs-response {
   color: var(--accent-color-light);
+}
+
+.api-docs-request p {
+  font-family: var(--font-family-monospace);
+  font-size: 0.95rem;
 }
