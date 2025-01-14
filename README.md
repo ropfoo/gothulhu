@@ -2,7 +2,7 @@
   <img src="https://github.com/ropfoo/gothulhu/blob/main/assets/favicon.ico" width="90" title="asmodeus">
 </p>
 <p align="center">
-  <a href="https://www.gothulhu.app">gothulhu.app</a>
+  <a href="https://gothulhu.fly.dev">gothulhu</a>
 </p>
 
 A simple character generator for the Call of Cthulhu 7th edition pen and paper role-playing game.
@@ -13,10 +13,10 @@ You can either run it as a CLI or as a web server.
 
 ```bash
 # generate a random character
-curl "https://www.gothulhu.app/api/generate"
+curl "https://gothulhu.fly.dev/api/generate"
 
 # generate a character with specific parameters
-curl "https://www.gothulhu.app/api/generate?name=Peter_Shaw&gender=male&con=50"
+curl "https://gothulhu.fly.dev/api/generate?name=Peter_Shaw&gender=male&con=50"
 ```
 
 List of available fields:
@@ -88,4 +88,4 @@ go test ./...
 
 ## Deployment
 
-The application is deployed on Fly.io and accessible at [www.gothulhu.app](https://www.gothulhu.app)
+The application is deployed on Fly.io and accessible at [https://gothulhu.fly.dev](https://gothulhu.fly.dev)
