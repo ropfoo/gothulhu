@@ -56,7 +56,7 @@ func buildCharacterURL(c model.Character) string {
 		{"siz", c.Stats.SIZ},
 	}
 
-	url := "https://www.gothulhu.app/generate?"
+	url := "https://gothulhu.fly.dev/generate?"
 	for i, p := range params {
 		if i > 0 {
 			url += "&"
