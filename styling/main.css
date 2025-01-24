@@ -263,4 +263,5 @@ footer {
 .api-docs-request p {
   font-family: var(--font-family-monospace);
   font-size: 0.95rem;
+  word-break: break-all;
 }

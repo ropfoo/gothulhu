@@ -6,27 +6,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/ropfoo/gothulhu/internal/character"
 	"github.com/ropfoo/gothulhu/internal/handlers"
+	"github.com/ropfoo/gothulhu/internal/handlers/api"
 	"github.com/ropfoo/gothulhu/internal/web"
 )
 
 func main() {
-	// create an endpoint to generate a character
-	http.HandleFunc("/api/generate", func(w http.ResponseWriter, r *http.Request) {
-		characterParams, err := web.GetCharacterParams(r)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
-		character := character.GenerateCharacter(characterParams)
-
-		log.Printf("Generating character for %s", characterParams.Name)
-		log.Printf("Character: %+v", character)
-
-		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(character.ToJSON()))
-	})
 
 	http.HandleFunc("/styling/", func(w http.ResponseWriter, r *http.Request) {
 		if !strings.HasSuffix(r.URL.Path, ".css") {
@@ -44,9 +29,13 @@ func main() {
 		http.ServeFile(w, r, "assets/favicon.ico")
 	})
 
+	// Web
 	http.HandleFunc("/", handlers.IndexHandler)
 	http.HandleFunc("/generate", handlers.GenerateHandler)
 	http.HandleFunc("/api-docs", handlers.ApiDocsHandler)
+
+	// API
+	http.HandleFunc("/api/generate", api.GenerateHandler)
 
 	const port = 8000
 	log.Printf("Starting server on port %d", port)
