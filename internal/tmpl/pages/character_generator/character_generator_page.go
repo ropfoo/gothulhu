@@ -19,6 +19,11 @@ func CharacterGeneratorPage(c model.Character) string {
 		return ""
 	}
 
+	var pageTitle string = "Generate Character | Gothulhu"
+	if c.Name != "" {
+		pageTitle = c.Name + " | Gothulhu"
+	}
+
 	data := struct {
 		Head            template.HTML
 		Navigation      template.HTML
@@ -27,7 +32,7 @@ func CharacterGeneratorPage(c model.Character) string {
 		Footer          template.HTML
 	}{
 		Head: general.Head(general.HeadParams{
-			Title:       "Generate Character | Gothulhu",
+			Title:       pageTitle,
 			Description: "Generate a character for Call of Cthulhu 7th edition with Gothulhu.",
 			Stylesheets: []string{"/styling/character.css"},
 		}),
