@@ -3,18 +3,18 @@ package character
 import "github.com/ropfoo/gothulhu/internal/model"
 
 var damageBonus = map[int]model.DamageBonus{
-	-2: {Damage: "-2", Stature: "-2"},
-	-1: {Damage: "-1", Stature: "-1"},
-	0:  {Damage: "0", Stature: "0"},
-	1:  {Damage: "1d4", Stature: "+1"},
-	2:  {Damage: "1d6", Stature: "+2"},
-	3:  {Damage: "2d6", Stature: "+3"},
-	4:  {Damage: "3d6", Stature: "+4"},
-	5:  {Damage: "4d6", Stature: "+5"},
-	6:  {Damage: "5d6", Stature: "+6"},
+	-2: {Damage: "-2", Build: "-2"},
+	-1: {Damage: "-1", Build: "-1"},
+	0:  {Damage: "0", Build: "0"},
+	1:  {Damage: "1d4", Build: "+1"},
+	2:  {Damage: "1d6", Build: "+2"},
+	3:  {Damage: "2d6", Build: "+3"},
+	4:  {Damage: "3d6", Build: "+4"},
+	5:  {Damage: "4d6", Build: "+5"},
+	6:  {Damage: "5d6", Build: "+6"},
 }
 
-func getDamageBonus(str int, siz int) model.DamageBonus {
+func getDamageBonus(str float32, siz float32) model.DamageBonus {
 	sum := str + siz
 	switch {
 	case sum <= 64:

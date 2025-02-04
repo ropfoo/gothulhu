@@ -26,14 +26,14 @@ func TestGenerateCharacter(t *testing.T) {
 	}
 
 	// Test that stats are within expected range (assuming getRandomStat returns 0-100)
-	stats := []int{
-		character.Stats.STR,
-		character.Stats.DEX,
-		character.Stats.CON,
-		character.Stats.INT,
-		character.Stats.WIS,
-		character.Stats.CHA,
-		character.Stats.SIZ,
+	stats := []float32{
+		character.Stats.STR[0],
+		character.Stats.DEX[0],
+		character.Stats.CON[0],
+		character.Stats.INT[0],
+		character.Stats.WIS[0],
+		character.Stats.CHA[0],
+		character.Stats.SIZ[0],
 	}
 
 	for _, stat := range stats {
@@ -43,12 +43,12 @@ func TestGenerateCharacter(t *testing.T) {
 	}
 
 	// Test that HP and DamageBonus are calculated
-	expectedHP := getHP(character.Stats.CON, character.Stats.SIZ)
+	expectedHP := getHP(character.Stats.CON[0], character.Stats.SIZ[0])
 	if character.HP != expectedHP {
 		t.Errorf("Expected HP to be %d, got %d", expectedHP, character.HP)
 	}
 
-	expectedDamageBonus := getDamageBonus(character.Stats.STR, character.Stats.SIZ)
+	expectedDamageBonus := getDamageBonus(character.Stats.STR[0], character.Stats.SIZ[0])
 	if character.DamageBonus != expectedDamageBonus {
 		t.Errorf("Expected DamageBonus to be %s, got %s", expectedDamageBonus, character.DamageBonus)
 	}

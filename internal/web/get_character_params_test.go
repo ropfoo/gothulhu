@@ -36,13 +36,13 @@ func TestGetCharacterParams(t *testing.T) {
 				Age:    25,
 				Gender: "male",
 				Stats: model.Stats{
-					STR: 14,
-					DEX: 12,
-					CON: 13,
-					SIZ: 11,
-					INT: 15,
-					WIS: 10,
-					CHA: 16,
+					STR: []float32{14, 7, 2.8},
+					DEX: []float32{12, 6, 2.4},
+					CON: []float32{13, 6.5, 2.6},
+					SIZ: []float32{11, 5.5, 2.2},
+					INT: []float32{15, 7.5, 3},
+					WIS: []float32{10, 5, 2},
+					CHA: []float32{16, 8, 3.2},
 				},
 			},
 			wantErr: false,
@@ -66,13 +66,13 @@ func TestGetCharacterParams(t *testing.T) {
 				Age:    30,
 				Gender: "female",
 				Stats: model.Stats{
-					STR: 16,
-					DEX: 15,
-					CON: 14,
-					SIZ: 12,
-					INT: 13,
-					WIS: 11,
-					CHA: 10,
+					STR: []float32{16, 8, 3.2},
+					DEX: []float32{15, 7.5, 3},
+					CON: []float32{14, 7, 2.8},
+					SIZ: []float32{12, 6, 2.4},
+					INT: []float32{13, 6.5, 2.6},
+					WIS: []float32{11, 5.5, 2.2},
+					CHA: []float32{10, 5, 2},
 				},
 			},
 			wantErr: false,
@@ -89,13 +89,13 @@ func TestGetCharacterParams(t *testing.T) {
 				Age:    0,
 				Gender: "",
 				Stats: model.Stats{
-					STR: 14,
-					DEX: 12,
-					CON: 0,
-					SIZ: 0,
-					INT: 0,
-					WIS: 0,
-					CHA: 0,
+					STR: []float32{14, 7, 2.8},
+					DEX: []float32{12, 6, 2.4},
+					CON: []float32{0, 0, 0},
+					SIZ: []float32{0, 0, 0},
+					INT: []float32{0, 0, 0},
+					WIS: []float32{0, 0, 0},
+					CHA: []float32{0, 0, 0},
 				},
 			},
 			wantErr: false,
@@ -111,7 +111,13 @@ func TestGetCharacterParams(t *testing.T) {
 				Age:    25,
 				Gender: "male",
 				Stats: model.Stats{
-					STR: 14,
+					STR: []float32{14, 7, 2.8},
+					DEX: []float32{0, 0, 0},
+					CON: []float32{0, 0, 0},
+					SIZ: []float32{0, 0, 0},
+					INT: []float32{0, 0, 0},
+					WIS: []float32{0, 0, 0},
+					CHA: []float32{0, 0, 0},
 				},
 			},
 			wantErr: false,
@@ -135,13 +141,13 @@ func TestGetCharacterParams(t *testing.T) {
 				Age:    0,
 				Gender: "male",
 				Stats: model.Stats{
-					STR: 10,
-					DEX: 10,
-					CON: 10,
-					SIZ: 10,
-					INT: 10,
-					WIS: 10,
-					CHA: 10,
+					STR: []float32{10, 5, 2},
+					DEX: []float32{10, 5, 2},
+					CON: []float32{10, 5, 2},
+					SIZ: []float32{10, 5, 2},
+					INT: []float32{10, 5, 2},
+					WIS: []float32{10, 5, 2},
+					CHA: []float32{10, 5, 2},
 				},
 			},
 			wantErr: false,
@@ -165,13 +171,13 @@ func TestGetCharacterParams(t *testing.T) {
 				Age:    25,
 				Gender: "invalid_gender",
 				Stats: model.Stats{
-					STR: 10,
-					DEX: 10,
-					CON: 10,
-					SIZ: 10,
-					INT: 10,
-					WIS: 10,
-					CHA: 10,
+					STR: []float32{10, 5, 2},
+					DEX: []float32{10, 5, 2},
+					CON: []float32{10, 5, 2},
+					SIZ: []float32{10, 5, 2},
+					INT: []float32{10, 5, 2},
+					WIS: []float32{10, 5, 2},
+					CHA: []float32{10, 5, 2},
 				},
 			},
 			wantErr: false,
@@ -211,10 +217,33 @@ func TestGetCharacterParams(t *testing.T) {
 				if got.Gender != tt.want.Gender {
 					t.Errorf("GetCharacterParams() got gender = %v, want %v", got.Gender, tt.want.Gender)
 				}
-				if got.Stats != tt.want.Stats {
+				if !compareStats(got.Stats, tt.want.Stats) {
 					t.Errorf("GetCharacterParams() got stats = %v, want %v", got.Stats, tt.want.Stats)
 				}
 			}
 		})
 	}
+}
+
+// Add helper function to compare Stats
+func compareStats(a, b model.Stats) bool {
+	return slicesEqual(a.STR, b.STR) &&
+		slicesEqual(a.DEX, b.DEX) &&
+		slicesEqual(a.CON, b.CON) &&
+		slicesEqual(a.SIZ, b.SIZ) &&
+		slicesEqual(a.INT, b.INT) &&
+		slicesEqual(a.WIS, b.WIS) &&
+		slicesEqual(a.CHA, b.CHA)
+}
+
+func slicesEqual(a, b []float32) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }

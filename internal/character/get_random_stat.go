@@ -13,9 +13,10 @@ func getRandomStat() int {
 	return sum / rolls
 }
 
-func getStat(stat int) int {
+func getStat(stat float32) []float32 {
 	if stat > 0 {
-		return stat
+		return []float32{float32(stat), float32(stat) / 2, float32(stat) / 5}
 	}
-	return getRandomStat()
+	randomStat := getRandomStat()
+	return []float32{float32(randomStat), float32(randomStat) / 2, float32(randomStat) / 5}
 }

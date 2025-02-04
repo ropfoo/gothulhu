@@ -16,21 +16,27 @@ type Character struct {
 	HP          int         `json:"hp"`
 	DamageBonus DamageBonus `json:"damage_bonus"`
 	Stats       Stats       `json:"stats"`
+	Skills      []Skill     `json:"skills"`
 }
 
 type DamageBonus struct {
-	Damage  string `json:"damage"`
-	Stature string `json:"stature"`
+	Damage string `json:"damage"`
+	Build  string `json:"build"`
 }
 
 type Stats struct {
-	STR int `json:"str"`
-	DEX int `json:"dex"`
-	CON int `json:"con"`
-	INT int `json:"int"`
-	WIS int `json:"wis"`
-	CHA int `json:"cha"`
-	SIZ int `json:"siz"`
+	STR []float32 `json:"str"`
+	DEX []float32 `json:"dex"`
+	CON []float32 `json:"con"`
+	INT []float32 `json:"int"`
+	WIS []float32 `json:"wis"`
+	CHA []float32 `json:"cha"`
+	SIZ []float32 `json:"siz"`
+}
+
+type Skill struct {
+	Name  string    `json:"name"`
+	Score []float32 `json:"score"`
 }
 
 func (c Character) ToJSON() string {

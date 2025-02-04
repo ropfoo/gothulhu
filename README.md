@@ -45,18 +45,24 @@ Sample response:
   "gender": "male",
   "hp": 11,
   "stats": {
-    "str": 71,
-    "dex": 47,
-    "con": 50,
-    "siz": 61,
-    "int": 36,
-    "wis": 65,
-    "cha": 53
+    "str": [71, 33.5, 14.2],
+    "dex": [47, 21.5, 9.4],
+    "con": [50, 23.5, 10.2],
+    "siz": [61, 28.5, 12.2],
+    "int": [36, 16.5, 7.2],
+    "wis": [65, 30.5, 13.2],
+    "cha": [53, 24.5, 10.2]
   },
   "damage_bonus": {
     "damage": "1d4",
-    "stature": "+1"
-  }
+    "build": "+1"
+  },
+  "skills": [
+    {
+      "name": "Perception",
+      "score": [50, 25, 10]
+    }
+  ]
 }
 ```
 

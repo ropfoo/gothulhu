@@ -67,12 +67,16 @@ func parseStats(values map[string]string) (map[string]int, error) {
 // buildCharacterStats creates a Stats struct from the parsed values
 func buildCharacterStats(stats map[string]int) model.Stats {
 	return model.Stats{
-		STR: stats["str"],
-		DEX: stats["dex"],
-		CON: stats["con"],
-		SIZ: stats["siz"],
-		INT: stats["intl"],
-		WIS: stats["wis"],
-		CHA: stats["cha"],
+		STR: getCharacterStat(stats["str"]),
+		DEX: getCharacterStat(stats["dex"]),
+		CON: getCharacterStat(stats["con"]),
+		SIZ: getCharacterStat(stats["siz"]),
+		INT: getCharacterStat(stats["intl"]),
+		WIS: getCharacterStat(stats["wis"]),
+		CHA: getCharacterStat(stats["cha"]),
 	}
+}
+
+func getCharacterStat(value int) []float32 {
+	return []float32{float32(value), float32(value) / 2, float32(value) / 5}
 }

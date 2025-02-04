@@ -38,16 +38,16 @@ func GenerateCharacter(params model.CharacterParams) model.Character {
 		Age:    age,
 		Gender: gender,
 		Stats: model.Stats{
-			STR: getStat(params.Stats.STR),
-			DEX: getStat(params.Stats.DEX),
-			CON: getStat(params.Stats.CON),
-			INT: getStat(params.Stats.INT),
-			WIS: getStat(params.Stats.WIS),
-			CHA: getStat(params.Stats.CHA),
-			SIZ: getStat(params.Stats.SIZ),
+			STR: getStat(params.Stats.STR[0]),
+			DEX: getStat(params.Stats.DEX[0]),
+			CON: getStat(params.Stats.CON[0]),
+			INT: getStat(params.Stats.INT[0]),
+			WIS: getStat(params.Stats.WIS[0]),
+			CHA: getStat(params.Stats.CHA[0]),
+			SIZ: getStat(params.Stats.SIZ[0]),
 		},
 	}
-	character.HP = getHP(character.Stats.CON, character.Stats.SIZ)
-	character.DamageBonus = getDamageBonus(character.Stats.STR, character.Stats.SIZ)
+	character.HP = getHP(character.Stats.CON[0], character.Stats.SIZ[0])
+	character.DamageBonus = getDamageBonus(character.Stats.STR[0], character.Stats.SIZ[0])
 	return character
 }
