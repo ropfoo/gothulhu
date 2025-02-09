@@ -55,36 +55,11 @@
         <div class="character-damage-bonus-row">
           <p class="character-damage-bonus-stature">Stature:</p>
           <p class="character-damage-bonus-stature">
-            {{.Character.DamageBonus.Stature}}
+            {{.Character.DamageBonus.Build}}
           </p>
         </div>
       </div>
     </div>
-    <div class="character-stats">
-      <div class="character-stats-row">
-        <p>STR</p>
-        <p class="character-stats-value">{{.Character.Stats.STR}}</p>
-      </div>
-      <div class="character-stats-row">
-        <p>DEX</p>
-        <p class="character-stats-value">{{.Character.Stats.DEX}}</p>
-      </div>
-      <div class="character-stats-row">
-        <p>CON</p>
-        <p class="character-stats-value">{{.Character.Stats.CON}}</p>
-      </div>
-      <div class="character-stats-row">
-        <p>INT</p>
-        <p class="character-stats-value">{{.Character.Stats.INT}}</p>
-      </div>
-      <div class="character-stats-row">
-        <p>WIS</p>
-        <p class="character-stats-value">{{.Character.Stats.WIS}}</p>
-      </div>
-      <div class="character-stats-row">
-        <p>CHA</p>
-        <p class="character-stats-value">{{.Character.Stats.CHA}}</p>
-      </div>
-    </div>
+    <div class="character-stats">{{.CharacterStatRows}}</div>
   </div>
 </section>

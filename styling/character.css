@@ -192,3 +192,21 @@
   justify-content: space-between;
   gap: 1rem;
 }
+
+.character-stats-value-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.character-stats-value-row-modifier {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.character-stats-value-modifier p {
+  font-size: 0.2rem;
+  color: var(--accent-color-light);
+}
