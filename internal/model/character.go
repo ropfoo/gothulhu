@@ -35,8 +35,14 @@ type Stats struct {
 }
 
 type Skill struct {
-	Name  string    `json:"name"`
-	Score []float32 `json:"score"`
+	Definition SkillDefinition `json:"definition"`
+	Score      []float32       `json:"score"`
+}
+
+type SkillDefinition struct {
+	Id          string `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
 }
 
 func (c Character) ToJSON() string {

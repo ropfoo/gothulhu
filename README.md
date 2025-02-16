@@ -19,7 +19,7 @@ curl "https://gothulhu.fly.dev/api/generate"
 curl "https://gothulhu.fly.dev/api/generate?name=Peter_Shaw&gender=male&con=50"
 ```
 
-List of available fields:
+List of available stat parameters:
 
 | Field  | Required | Type             |
 | ------ | -------- | ---------------- |
@@ -59,8 +59,20 @@ Sample response:
   },
   "skills": [
     {
-      "name": "Perception",
-      "score": [50, 25, 10]
+      "definition": {
+        "id": "itm",
+        "name": "Intimidate",
+        "description": "Intimidate is the ability to influence others through threats, fear, and shows of force."
+      },
+      "score": [53, 24.5, 10.2]
+    },
+    {
+      "definition": {
+        "id": "fst",
+        "name": "Fast Talk",
+        "description": "Fast Talk is the ability to mislead or confuse others through quick thinking and rapid speech."
+      },
+      "score": [24, 11.5, 4.4]
     }
   ]
 }
